@@ -1,0 +1,20 @@
+<div style="height: calc(100vh - 300px); overflow-y: auto;">
+  <div *ngFor="let user of paginatedUsers()" style="display: flex; gap: 5px; align-items: center;">
+    <div>
+      {{ user.id }}. {{ user.name }}
+    </div>
+    <div>
+      <mat-icon (click)="goToDetail(user)">person</mat-icon>
+      <mat-icon (click)="confirmDelete(user.id)">delete</mat-icon>
+    </div>
+  </div>
+
+
+<!-- Pagination Controls -->
+<div style="margin-top: 20px; display: flex; gap: 10px;">
+  <button (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
+  <span>Page {{ currentPage }} of {{ totalPages() }}</span>
+  <button (click)="nextPage()" [disabled]="currentPage === totalPages()">Next</button>
+</div>
+</div>
+<router-outlet/>
